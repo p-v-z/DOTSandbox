@@ -11,14 +11,16 @@ class SpawnerBaker : Baker<SpawnerAuthoring>
 {
     public override void Bake(SpawnerAuthoring authoring)
     {
-        AddComponent(new Spawner
+        Debug.Log("Baking spawner...");
+        var spawner = new Spawner
         {
             // By default, each authoring GameObject turns into an Entity.
             // Given a GameObject (or authoring component), GetEntity looks up the resulting Entity.
             Prefab = GetEntity(authoring.Prefab),
             SpawnPosition = authoring.transform.position,
             NextSpawnTime = 0.0f,
-            SpawnRate = authoring.SpawnRate
-        });
+            SpawnRate = authoring.SpawnRate,
+        };
+        AddComponent(spawner);
     }
 }

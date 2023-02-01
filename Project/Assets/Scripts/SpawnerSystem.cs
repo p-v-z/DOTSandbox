@@ -1,12 +1,18 @@
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using Unity.Burst;
+using UnityEngine;
 
 [BurstCompile]
 public partial struct OptimizedSpawnerSystem : ISystem
 {
-	public void OnCreate(ref SystemState state) { }
+	public void OnCreate(ref SystemState state)
+	{
+		Debug.Log("optimized create");
+		
+		// var entity = state.EntityManager.CreateEntity();
+		// state.EntityManager.AddComponent<Rigidbody>(entity);
+	}
 
 	public void OnDestroy(ref SystemState state) { }
 
@@ -43,7 +49,7 @@ public partial struct ProcessSpawnerJob : IJobEntity
 			// Spawns a new entity and positions it at the spawner.
 			Entity newEntity = Ecb.Instantiate(chunkIndex, spawner.Prefab);
 			Ecb.SetComponent(chunkIndex, newEntity, LocalTransform.FromPosition(spawner.SpawnPosition));
-
+			
 			// Resets the next spawn time.
 			spawner.NextSpawnTime = (float)ElapsedTime + spawner.SpawnRate;
 		}
