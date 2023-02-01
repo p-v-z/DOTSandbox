@@ -6,13 +6,7 @@ using UnityEngine;
 [BurstCompile]
 public partial struct OptimizedSpawnerSystem : ISystem
 {
-	public void OnCreate(ref SystemState state)
-	{
-		Debug.Log("optimized create");
-		
-		// var entity = state.EntityManager.CreateEntity();
-		// state.EntityManager.AddComponent<Rigidbody>(entity);
-	}
+	public void OnCreate(ref SystemState state) { }
 
 	public void OnDestroy(ref SystemState state) { }
 
