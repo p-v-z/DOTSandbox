@@ -19,7 +19,7 @@ jobs:
           sudo adduser $USER fuse
 
       - name: Create annotation for build error
-        run: echo "::notice::Fuse installed
+        run: echo "::notice::Fuse installed"
 
       - name: Checkout repository
         uses: actions/checkout@v2
