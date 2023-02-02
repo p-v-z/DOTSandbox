@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Set up Unity
-      uses: actions/setup-unity@v1
+      uses: actions/setup-unity@v1.1.0
       with:
         version: 2022.2.1f1
         license: requested
