@@ -13,9 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Log Current Directory
-        run: echo "Current Directory: $PWD"
-
       - name: Set up Unity
         uses: kuler90/setup-unity@v1.1.0
         with:
