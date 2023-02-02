@@ -16,7 +16,7 @@ jobs:
       - name: Set up Unity
         uses: kuler90/setup-unity@v1.1.0
         with:
-          project-path: ${{ github.workspace/Project }}
+          project-path: ${{ github.workspace }}/Project
           unity-modules: webgl
 
       - name: Activate Unity
