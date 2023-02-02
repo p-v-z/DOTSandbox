@@ -21,12 +21,6 @@ jobs:
 
           sudo apt-get install --reinstall at-spi2-core
 
-      - name: Restart workflow
-        uses: actions/rerun-workflow@v1
-        with:
-          workflow_id: ${{ workflow.id }}
-          event: ${{ toJson(github) }}
-
       - name: Create annotation for build error
         run: echo "::notice::Fuse installed"
 
