@@ -13,6 +13,7 @@ jobs:
       - name: Setup dependencies
         run: |
           sudo apt install fuse
+          sudo apt-get install at-spi2-core
 
       - name: Create annotation for build error
         run: echo "::notice::Fuse installed"
