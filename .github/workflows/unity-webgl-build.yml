@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Setup dependencies
         run: |
-          sudo apt-get update
+          # sudo apt-get update
 
           sudo apt-get install -y fuse libfuse2
           sudo modprobe -v fuse 
