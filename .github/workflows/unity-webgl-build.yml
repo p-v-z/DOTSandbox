@@ -21,6 +21,10 @@ jobs:
 
           sudo apt-get install --reinstall at-spi2-core
 
+      - name: Reboot machine
+        run: |
+          sudo reboot
+
       - name: Create annotation for build error
         run: echo "::notice::Fuse installed"
 
