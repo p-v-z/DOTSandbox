@@ -12,7 +12,6 @@ jobs:
       # Startup
       - name: Create annotation for build error
         run: echo "::notice::Builder ready"
-
 #     # Checkout
 #     - name: Checkout repository
 #       uses: actions/checkout@v2
