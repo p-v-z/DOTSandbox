@@ -1,61 +1,48 @@
-name: Unity WebGL Build
+# name: Unity WebGL Build
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       # Checkout
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+#         with:
+#           lfs: true
 
-    steps:
-      - name: Setup dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y fuse libfuse2
-          sudo modprobe -v fuse 
-          sudo addgroup fuse
-          sudo adduser $USER fuse
+#       Cache
+#       - uses: actions/cache@v2
+#         with:
+#           path: Library
+#           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+#           restore-keys: |
+#             Library-
 
-      - name: Create annotation for build error
-        run: echo "::notice::Fuse installed"
+#       # Test
+#       - name: Run tests
+#         uses: game-ci/unity-test-runner@v2
+#         env:
+#           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#         with:
+#           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout repository
-        uses: actions/checkout@v2
+#       # Build
+#       - name: Build project
+#         uses: game-ci/unity-builder@v2
+#         env:
+#           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+#           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+#         with:
+#           targetPlatform: WebGL
 
-      - name: Set up Unity
-        uses: kuler90/setup-unity@v1.1.0
-        with:
-          unity-version: 2022.1.7f1
-          project-path: ${{ github.workspace }}/Project
-          unity-modules: webgl
-
-      - name: Activate Unity
-        uses: kuler90/activate-unity@v1.1.3
-        with:
-          unity-username: ${{ secrets.UNITY_USERNAME }}
-          unity-password: ${{ secrets.UNITY_PASSWORD }}
-
-      - name: Build Unity
-        uses: kuler90/build-unity@v1.0.4
-        with:
-          build-target: WebGL
-          build-path: ./dist/
-
-    # - name: Upload WebGL build artifacts
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: WebGLBuild
-    #     path: Build/WebGL
-
-    # - name: Create GitHub Release
-    #   uses: actions/create-release@v1
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    #   with:
-    #     tag_name: ${{ env.TAG_NAME }}
-    #     release_name: Release $(date +'%Y-%m-%d')
-    #     draft: false
-    #     prerelease: false
-    #     artifacts: Build/WebGL
+#       # Output
+#       - uses: actions/upload-artifact@v2
+#         with:
+#           name: Build
+#           path: build
