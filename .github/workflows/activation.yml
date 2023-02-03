@@ -3,7 +3,7 @@ name: Acquire activation file
 on:
   push:
     branches:
-      - main
+      - activate
 
 jobs:
   activation:
