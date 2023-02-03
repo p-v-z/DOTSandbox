@@ -1,21 +1,25 @@
-# name: Unity WebGL Build
+name: Unity WebGL Build
 
-# on:
-#   push:
-#     branches:
-#       - main
+on:
+  push:
+    branches:
+      - main
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       # Checkout
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
-#         with:
-#           lfs: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Startup
+      - name: Create annotation for build error
+        run: echo "::notice::Builder ready"
 
-#       Cache
+#     # Checkout
+#     - name: Checkout repository
+#       uses: actions/checkout@v2
+#       with:
+#         lfs: true
+
+#       # Cache
 #       - uses: actions/cache@v2
 #         with:
 #           path: Library
